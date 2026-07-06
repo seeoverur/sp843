@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Street Food Crawl | Sweet Palm Coffee & Food</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand: #EFE6D3;
+    --sand-deep: #E4D7BB;
+    --palmetto: #1F4D3A;
+    --palmetto-deep: #163A2B;
+    --coral: #E8895A;
+    --butter: #F2B807;
+    --ink: #2B2620;
+    --paper: #FAF6EC;
+  }
+
+  body{
+    background: var(--sand);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, .display-font{
+    font-family: 'Fraunces', serif;
+  }
+
+  .eyebrow{
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    color: var(--palmetto);
+  }
+
+  /* Nav */
+  .navbar-custom{
+    background: var(--paper);
+    border-bottom: 3px solid var(--palmetto);
+  }
+  .navbar-brand{
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    color: var(--palmetto) !important;
+    font-size: 1.4rem;
+  }
+  .navbar-brand span{ color: var(--coral); }
+
+  /* Hero */
+  .hero{
+    background: var(--palmetto);
+    color: var(--paper);
+    padding: 5rem 0 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after{
+    content: "";
+    position: absolute;
+    right: -60px; top: -60px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: var(--palmetto-deep);
+    opacity: 0.6;
+  }
+  .hero h1{
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.1;
+  }
+  .hero p.lead{
+    color: #D9E5DD;
+    max-width: 640px;
+    font-size: 1.1rem;
+  }
+
+  /* Spotlight ticket section */
+  .spotlight{
+    background: var(--paper);
+    border: 1px solid #DDD1B4;
+    border-radius: 6px;
+    padding: 2.5rem;
+    position: relative;
+  }
+  .stamp{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--coral);
+    border: 2px solid var(--coral);
+    border-radius: 50%;
+    width: 108px; height: 108px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transform: rotate(-9deg);
+    position: absolute;
+    top: -20px;
+    right: 24px;
+    background: var(--paper);
+  }
+
+  .menu-ticket{
+    background: var(--sand);
+    border-radius: 4px;
+    padding: 1.25rem 1.4rem;
+    height: 100%;
+    border-left: 4px solid var(--coral);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .menu-ticket:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(31,77,58,0.12);
+  }
+  .menu-ticket .tag{
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--palmetto);
+  }
+  .menu-ticket h4{
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    margin: 0.35rem 0 0.5rem;
+  }
+  .menu-ticket p{
+    font-size: 0.92rem;
+    color: #4A4438;
+    margin-bottom: 0;
+  }
+
+  .btn-palmetto{
+    background: var(--palmetto);
+    color: var(--paper);
+    border: none;
+    font-weight: 600;
+    padding: 0.65rem 1.5rem;
+    border-radius: 4px;
+  }
+  .btn-palmetto:hover{
+    background: var(--palmetto-deep);
+    color: var(--paper);
+  }
+  .btn-outline-coral{
+    border: 2px solid var(--coral);
+    color: var(--coral);
+    font-weight: 600;
+    padding: 0.6rem 1.4rem;
+    border-radius: 4px;
+    background: transparent;
+  }
+  .btn-outline-coral:hover{
+    background: var(--coral);
+    color: var(--paper);
+  }
+
+  /* Other stops section */
+  .section-label{
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: var(--coral);
+  }
+
+  .stop-card{
+    background: var(--paper);
+    border: 1px solid #DDD1B4;
+    border-radius: 6px;
+    padding: 1.5rem;
+    height: 100%;
+  }
+  .stop-card h5{
+    font-family: 'Fraunces', serif;
+    color: var(--palmetto);
+    margin-bottom: 0.4rem;
+  }
+  .stop-card p{
+    font-size: 0.92rem;
+    color: #4A4438;
+    margin-bottom: 0;
+  }
+
+  footer{
+    background: var(--palmetto-deep);
+    color: #C9D8CE;
+    padding: 2.5rem 0;
+    font-size: 0.9rem;
+  }
+  footer a{ color: var(--butter); text-decoration: none; }
+  footer a:hover{ text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce){
+    .menu-ticket{ transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-custom py-3">
+  <div class="container">
+    <a class="navbar-brand" href="#">Sweet Palm <span>Coffee & Food</span></a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="eyebrow" style="color:#B7CCBF;">King Street Food Crawl</p>
+    <h1>Charleston eats worth walking for</h1>
+    <p class="lead mt-3">King Street runs the length of the peninsula, and it's packed with places worth stopping for. Here's a quick guide to what's good right now — starting with what we're serving at Sweet Palm.</p>
+  </div>
+</header>
+
+<main class="container py-5">
+
+  <!-- Sweet Palm Spotlight -->
+  <section class="spotlight mb-5">
+    <span class="stamp">King St<br>Favorite</span>
+    <p class="section-label mb-1">On the menu at</p>
+    <h2 class="mb-3">Sweet Palm Coffee & Food</h2>
+    <p style="max-width:680px;">Sweet Palm is built around real food made to order — not shortcuts. Wraps are packed fresh, breakfast is made to fuel your whole day, and everything is easy to grab on your way down King Street. Here's what people keep coming back for.</p>
+
+    <div class="row g-3 mt-2">
+      <div class="col-md-6 col-lg-3">
+        <div class="menu-ticket">
+          <p class="tag">Lunch</p>
+          <h4>Chicken Caesar Wrap</h4>
+          <p>Grilled chicken, romaine, shaved parmesan, and a real Caesar dressing, rolled tight in a warm tortilla. No soggy lettuce, no shortcuts.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="menu-ticket">
+          <p class="tag">Plant-Based</p>
+          <h4>Spicy Boca Wrap</h4>
+          <p>A seasoned Boca patty with a spicy sauce, crisp veggies, and melted cheese. Built for anyone who wants flavor without meat.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="menu-ticket">
+          <p class="tag">Breakfast</p>
+          <h4>Breakfast Burrito</h4>
+          <p>Scrambled eggs, cheese, potatoes, and your choice of meat wrapped up and ready to go — the one people order twice a week.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="menu-ticket">
+          <p class="tag">Sip</p>
+          <h4>Dirty Soda</h4>
+          <p>Coffee-shop flavor shots stirred into soda over ice. Sweet, a little weird, and genuinely addictive alongside anything on the menu.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2 mt-4">
+      <a href="https://www.sweetpalmcoffee.com" target="_blank" rel="noopener" class="btn btn-palmetto">Visit sweetpalmcoffee.com</a>
+      <a href="https://cash.app/order/$sweetpalmcoffeellc/pickup" target="_blank" rel="noopener" class="btn btn-outline-coral">Order Pickup</a>
+    </div>
+  </section>
+
+  <!-- Other King Street stops -->
+  <section>
+    <p class="section-label mb-1">Also worth a stop</p>
+    <h2 class="mb-4">More King Street & Charleston favorites</h2>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4">
+        <div class="stop-card">
+          <h5>Hyman's Seafood</h5>
+          <p>A Meeting Street institution for classic Lowcountry seafood — shrimp and grits, fried platters, and a menu that hasn't chased trends in decades.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="stop-card">
+          <h5>Toast</h5>
+          <p>A brunch staple downtown known for big Southern breakfast plates and biscuits, with lines out the door most weekend mornings.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="stop-card">
+          <h5>Bodega</h5>
+          <p>A casual King Street sandwich and beer spot with a laid-back, corner-store feel — good for a quick bite between shops.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="stop-card">
+          <h5>Callie's Hot Little Biscuit</h5>
+          <p>Small-batch biscuits made the old way, served fast out of a walk-up window near the market.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="stop-card">
+          <h5>Xiao Bao Biscuit</h5>
+          <p>An unassuming former gas station turned Asian-inspired kitchen, with a menu that changes often and rewards regulars.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="stop-card">
+          <h5>Poogan's Porch</h5>
+          <p>A historic house-turned-restaurant on Queen Street serving upscale Southern classics in a porch-and-parlor setting.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+    <p class="mb-0">Sweet Palm Coffee & Food — Charleston, SC</p>
+    <p class="mb-0"><a href="https://www.sweetpalmcoffee.com" target="_blank" rel="noopener">www.sweetpalmcoffee.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
